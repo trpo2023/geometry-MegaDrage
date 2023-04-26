@@ -5,15 +5,17 @@ CPPFLAGS = -MMD
 
 bin/main: bin/main.o bin/geometrysearch.a bin/parser.a
 	$(CC) $(CFLAGS) -o $@ $^
-bin/main.o: src/geometry/geometry.c
+	
+bin/main.o: src/geometry/main.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $< -I src
 
-bin/geometrylib.a: bin/geometrysearch.o
+bin/geometrysearch.a: bin/geometrysearch.o
 	ar rsc $@ $^
 
 bin/parser.a: bin/parser.o
 	ar rsc $@ $^
 
-bin/geometrylib.o: src/libgeometry/geometrysearch.c
+bin/geometrysearch.o: src/libgeometry/geometrysearch.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 bin/parser.o: src/libgeometry/parser.c
@@ -22,7 +24,7 @@ bin/parser.o: src/libgeometry/parser.c
 main: main.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-main.o: geometry.c
+main.o: main.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 clean: 
