@@ -3,9 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-int find_circle(char* str, char** err_msg, int* err_smb)
+#include "parser.h"
+
+int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
 {
-    size_t i, j;
+    unsigned int i, j;
+    char buffer[2];
+
     if (strncmp(str, "circle(", 7) == 0) { // circle
 
         for (i = 7; i < strlen(str); i++) { // founding number 1
@@ -28,7 +32,7 @@ int find_circle(char* str, char** err_msg, int* err_smb)
                     return 1;
                 }
                 if (str[j] == 0) {
-                    *err_msg = "expected digit, dot or space\n";
+                    *err_msg = "1expected digit, dot or space\n";
                     *err_smb = j;
                     return 1;
                 }
@@ -143,15 +147,21 @@ int find_circle(char* str, char** err_msg, int* err_smb)
             if (str[i] == 32) {                 // " "
                 continue;
             }
+            buffer[0] = str[i];
+            strcat(*c_radius, buffer);
             if (isdigit(str[i])) {
                 for (j = i + 1; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        buffer[0] = str[j];
+                        strcat(*c_radius, buffer);
                         continue;
                     }
                     if (str[j] == 32) { // " "
                         break;
                     }
                     if (str[j] == 46) { // "."
+                        buffer[0] = str[j];
+                        strcat(*c_radius, buffer);
                         break;
                     }
                     if (str[j] == 41) { // ")"
@@ -174,6 +184,8 @@ int find_circle(char* str, char** err_msg, int* err_smb)
             if (str[j] == 46) {
                 for (j++; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        buffer[0] = str[j];
+                        strcat(*c_radius, buffer);
                         continue;
                     }
                     if (str[j] == 32) { // " "
