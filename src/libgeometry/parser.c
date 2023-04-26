@@ -1,4 +1,7 @@
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int find_circle(char* str, char** err_msg, int* err_smb)
 {
