@@ -7,10 +7,16 @@
 
 float circle_perimeter(float radius)
 {
-    return (2 * M_PI * radius);
+    if (radius > 0)
+        return (2 * M_PI * radius);
+
+    return 0;
 }
 
 float circle_area(float radius)
 {
-    return (M_PI * radius * radius);
+    if (radius > 0)
+        return (M_PI * radius * radius);
+
+    return 0;
 }
