@@ -5,10 +5,18 @@
 
 #include "parser.h"
 
-int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
+int find_circle(
+        char* str,
+        char** err_msg,
+        int* err_smb,
+        char** c_radius,
+        char** x,
+        char** y)
 {
     unsigned int i, j;
     char buffer[2];
+    char bufferx[2];
+    char buffery[2];
 
     if (strncmp(str, "circle(", 7) == 0) { // circle
 
@@ -16,15 +24,26 @@ int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
             if (str[i] == 32) {             // " "
                 continue;
             }
+            bufferx[0] = str[i];
+            strcat(*x, bufferx);
+            if (str[i] == 45) { // "-"
+                bufferx[0] = str[i];
+                strcat(*x, bufferx);
+                continue;
+            }
             if (isdigit(str[i])) {
                 for (j = i + 1; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        bufferx[0] = str[j];
+                        strcat(*x, bufferx);
                         continue;
                     }
                     if (str[j] == 32) { // " "
                         break;
                     }
                     if (str[j] == 46) { // "."
+                        bufferx[0] = str[j];
+                        strcat(*x, bufferx);
                         break;
                     }
                     *err_msg = "expected digit, dot or space\n";
@@ -44,6 +63,8 @@ int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
             if (str[j] == 46) {
                 for (j++; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        bufferx[0] = str[j];
+                        strcat(*x, bufferx);
                         continue;
                     }
                     if (str[j] == 32) { // " "
@@ -71,9 +92,18 @@ int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
             if (str[i] == 32) {                 // " "
                 continue;
             }
+            buffery[0] = str[i];
+            strcat(*y, buffery);
+            if (str[i] == 45) { // "-"
+                buffery[0] = str[i];
+                strcat(*y, buffery);
+                continue;
+            }
             if (isdigit(str[i])) {
                 for (j = i + 1; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        buffery[0] = str[j];
+                        strcat(*y, buffery);
                         continue;
                     }
                     if (str[j] == 44) { // ","
@@ -83,6 +113,8 @@ int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
                         break;
                     }
                     if (str[j] == 46) { // "."
+                        buffery[0] = str[j];
+                        strcat(*y, buffery);
                         break;
                     }
                     *err_msg = "expected digit, dot, space or comma\n";
@@ -102,6 +134,8 @@ int find_circle(char* str, char** err_msg, int* err_smb, char** c_radius)
             if (str[j] == 46) {
                 for (j++; j < strlen(str); j++) {
                     if (isdigit(str[j])) {
+                        buffery[0] = str[j];
+                        strcat(*y, buffery);
                         continue;
                     }
                     if (str[j] == 44) { // ","
