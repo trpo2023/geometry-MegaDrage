@@ -1,4 +1,4 @@
-#include <libgeometry/geometrylib.h>
+#include <libgeometry/geometrysearch.h>
 #include <libgeometry/parser.h>
 
 #include <ctest.h>
