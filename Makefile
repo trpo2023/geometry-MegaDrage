@@ -5,10 +5,10 @@ all: bin/geometry/main bin/geometry-test/test_main
 
 .PHONY: clean test play
 
-bin/geometry/main: obj/src/geometry/main.o bin/libgeometry.a
+bin/geometry/main: obj/src/geometry/main.o bin/geometrysearch.a
 	$(CC) $(CFLAGS) -o $@ $^ -lm
 
-bin/geometry-test/test_main: obj/test/main.o obj/test/tests.o bin/libgeometry.a
+bin/geometry-test/test_main: obj/test/main.o obj/test/tests.o bin/geometrysearch.a
 	$(CC) $(CFLAGS) -o $@ $^ -lm
 
 obj/src/geometry/main.o: src/geometry/main.c
@@ -20,10 +20,10 @@ obj/test/main.o: test/main.c
 obj/test/tests.o: test/tests.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $< -I src -I thirdparty
 	
-bin/libgeometry.a: obj/src/libgeometry/geometrylib.o obj/src/libgeometry/parser.o
+bin/geometrysearch.a: obj/src/libgeometry/geometrysearch.o obj/src/libgeometry/parser.o
 	ar rsc $@ $^
 
-obj/src/libgeometry/geometrylib.o: src/libgeometry/geometrylib.c
+obj/src/libgeometry/geometrysearch.o: src/libgeometry/geometrysearch.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 obj/src/libgeometry/parser.o: src/libgeometry/parser.c
