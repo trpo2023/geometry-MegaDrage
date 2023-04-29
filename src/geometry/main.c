@@ -158,8 +158,8 @@ int main(int argc, char* argv[])
         }
 
         printf("\n%s\n", figures[i].str);
-        printf("  perimeter: = %.4f\n", count_perimeter(figures[i].radius));
-        printf("  area: = %.4f\n", count_area(figures[i].radius));
+        printf("  perimeter: = %.4f\n", circle_perimeter(figures[i].radius));
+        printf("  area: = %.4f\n", circle_area(figures[i].radius));
         printf("  intersections: %d\n", figures[i].count_figures);
         for (j = 0; j < n; j++) {
             if (figures[i].index_figures[j]) {
