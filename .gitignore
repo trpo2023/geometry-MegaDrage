@@ -1,0 +1,14 @@
+# ignore logs
+hello-world
+\#hello-world#
+main.exe
+main
+main.d
+main.o
+main
+bin/parser.a
+bin/parser.d
+bin/parser.o
+bin/geometrysearch.a
+bin/geometrysearch.d
+bin/geometrysearch.o
