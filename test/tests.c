@@ -11,7 +11,7 @@ CTEST(geometry_suite, perimeter_1)
     const float a = 1.5;
 
     // When
-    const float result = count_perimeter(a);
+    const float result = circle_perimeter(a);
 
     // Then
     const float expected = 9.424778;
@@ -25,7 +25,7 @@ CTEST(geometry_suite, perimeter_2)
     const float a = 1;
 
     // When
-    const float result = count_perimeter(a);
+    const float result = circle_perimeter(a);
 
     // Then
     const float expected = 6.283185;
@@ -39,7 +39,7 @@ CTEST(geometry_suite, perimeter_3)
     const float a = 0;
 
     // When
-    const float result = count_perimeter(a);
+    const float result = circle_perimeter(a);
 
     // Then
     const float expected = 0;
@@ -53,7 +53,7 @@ CTEST(geometry_suite, perimeter_4)
     const float a = -1;
 
     // When
-    const float result = count_perimeter(a);
+    const float result = circle_perimeter(a);
 
     // Then
     const float expected = 0;
@@ -67,7 +67,7 @@ CTEST(geometry_suite, area_1)
     const float a = -1;
 
     // When
-    const float result = count_area(a);
+    const float result = circle_area(a);
 
     // Then
     const float expected = 0;
@@ -81,7 +81,7 @@ CTEST(geometry_suite, area_2)
     const float a = 0;
 
     // When
-    const float result = count_area(a);
+    const float result = circle_area(a);
 
     // Then
     const float expected = 0;
@@ -95,7 +95,7 @@ CTEST(geometry_suite, area_3)
     const float a = 1;
 
     // When
-    const float result = count_area(a);
+    const float result = circle_area(a);
 
     // Then
     const float expected = 3.141593;
@@ -109,7 +109,7 @@ CTEST(geometry_suite, area_4)
     const float a = 1.5;
 
     // When
-    const float result = count_area(a);
+    const float result = circle_area(a);
 
     // Then
     const float expected = 7.068583;
